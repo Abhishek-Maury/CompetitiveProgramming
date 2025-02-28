@@ -13,6 +13,8 @@ public class Duplicates {
         //     }
         // }
         // return false;
+
+        // approach 2
         int n=nums.length;
         Arrays.sort(nums);
         for (int i = 1; i < n; i++) {   //complexity O(n*Logn)
