@@ -2,6 +2,7 @@ package array;
 // https://leetcode.com/problems/contains-duplicate/description/
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class Duplicates {
     public static boolean containsDuplicates(int[] nums){
@@ -24,9 +25,23 @@ public class Duplicates {
         }
         return false;
     }
+
+    // Approach 3 is 0(n)   hashset approach 0(1)
+        public static boolean containDuplicate(int[] arr){
+        HashMap<Integer,Integer> seen =new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            int val =arr[i];
+            if (seen.containsKey(val)) {
+                return true;
+            }
+            seen.put(val, i);
+        }
+        return false;
+    }
     public static void main(String[] args) {
-        int[] nums={1,2,3,1};
+        int[] nums={1,2,2,3};
         System.out.println(containsDuplicates(nums));
+        System.out.println(containDuplicate(nums));
 
     }
 }
