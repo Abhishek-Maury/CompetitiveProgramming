@@ -53,8 +53,8 @@ public class SmallestWindowContainingAllCharacterOfAnotherString {
     }
 
     public static void main(String[] args) {
-        String s="aa";
-        String p="aa";
+        // String s="aa";
+        // String p="aa";
         System.out.println(smallestWindow(s, p));
     }
 }
