@@ -52,7 +52,7 @@ public class FindAPairWithGIvenDifference {
     public static void main(String[] args) {
         // int arr[] = { 5, 20, 3, 2, 50, 80 };
         // int diff = 78;
-        int arr[] = {7, 8, 1, 40, 100};
+        int arr[] = {30, 8, 1, 40, 100};
         int n = -60;
         // int n = arr.length;
         // search(arr, diff, n);
