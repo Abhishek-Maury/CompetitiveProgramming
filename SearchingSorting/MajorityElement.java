@@ -11,7 +11,8 @@ public class MajorityElement {
 
     // Aproach-> The first aproach comes in my mind is using HashMap,Using hashmap i
     // can store the frequency of th elements O(N) time and the numbers freq where
-    // math arr.size()/2 I just return the Element And its not present then i will
+    // I can check this condition arr.size()/2 if its found I just return the Element
+    // And if its not present then i will
     // return -1;
 
     public static int frequ(int[] arr) {
