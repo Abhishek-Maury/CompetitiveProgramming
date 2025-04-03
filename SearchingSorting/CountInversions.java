@@ -1,6 +1,8 @@
 package SearchingSorting;
 
 import java.util.ArrayList;
+// https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1
+// brute force Approch ->O(n^2)
 
 public class CountInversions {
     public static int count(int[] arr){
@@ -14,6 +16,8 @@ public class CountInversions {
        }
        return count;
     }
+
+// optimal Approach -> n
     public static int merging(int [] arr,int start,int mid,int end){
        ArrayList<Integer> temp =new ArrayList<>();
        int i=start;
@@ -24,9 +28,10 @@ public class CountInversions {
             temp.add(arr[i]);
             i++;
         }else{
-            temp.add(arr[j]);          
+            temp.add(arr[j]);  
+            j++;        
             invCount+=(mid-i+1);
-            j++;
+            
             
         }
         while (i<=mid) {
@@ -37,11 +42,11 @@ public class CountInversions {
             temp.add(arr[j]);
             j++;
         }
-        for (int idx = 0; idx <= end; idx++) {
-            arr[idx]=temp.get(i-start);
+        for (int idx = 0; idx <temp.size(); idx++) {
+            arr[start+idx]=temp.get(idx);
         }
        }
-       return invCount;
+       return invCount; 
     }
     public static int merge(int[] arr,int st,int end){
         if (st<end) {
@@ -56,7 +61,7 @@ public class CountInversions {
       
     }
     public static void main(String[] args) {
-        int[] arr={5, 4, 3, 2, 1};
+        int[] arr={2, 4, 1, 3, 5};
         // System.out.println(count(arr));
         System.out.println(merge(arr, 0, arr.length-1));
     }
