@@ -1,25 +1,21 @@
 package SearchingSorting;
 
-import java.util.Arrays;
+import java.util.*;
 // https://www.geeksforgeeks.org/find-a-pair-with-the-given-difference/
+import java.util.HashSet;
 
 public class FindAPairWithGIvenDifference {
     // brute force -->O(N^2)
 
-    public static void search(int[] arr, int diff, int n) {
+    public static boolean search(int[] arr, int x) {
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++) {
-                if (i == j) {
-                    continue;
-                }
-                if ((arr[j] - arr[i]) == diff) {
-                    System.out.println("(" + arr[i] + "," + arr[j] + ")");
-                    return;
-                }
+            for (int j = i + 1; j < arr.length; j++) {
+               if (Math.abs(arr[i]-arr[j])==x) {
+                return true;
+               } 
             }
-
         }
-        System.out.println("No such pair find");
+        return false;
 
     }
 
@@ -48,15 +44,31 @@ public class FindAPairWithGIvenDifference {
         System.out.print("No such pair");
         return false;
     }
+// optimal approach -> O(n) Time coplexitiy
+    public static boolean search3(int[] arr, int x) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int num : arr) {
+            if (set.contains(num + x) || set.contains(num - x)) {
+                return true;
+            }
+            set.add(num);
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
         // int arr[] = { 5, 20, 3, 2, 50, 80 };
         // int diff = 78;
-        int arr[] = {30, 8, 1, 40, 100};
+        int arr[] = { 30, 8, 1, 40, 100 };
         int n = -60;
         // int n = arr.length;
         // search(arr, diff, n);
-        search2(arr, n);
+        // search2(arr, n);
+        if (search3(arr, n)) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
 
     }
 }
