@@ -1,0 +1,71 @@
+package LinkedList;
+
+public class MergeSort {
+    static class Node{
+        int data;
+        Node next;
+        public Node(int data ) {
+            this.data=data;
+            this.next=null;
+        }
+        
+    }
+
+    private Node getMide(Node head){
+        Node slow =head;
+        Node fast=head.next;
+    
+        while (fast!=null && fast.next!=null) {
+            slow=slow.next;
+            fast=fast.next;
+        }
+        return slow;
+      }
+    
+      private Node merge(Node head1,Node head2){
+        Node mergell=new Node(-1);
+        Node temp=mergell;
+    
+        while (head1!=null && head2!=null) {
+            if (head1.data<=head2.data) {
+                temp.next=head1;
+                head1=head1.next;
+                temp=temp.next;
+            }else{
+                temp.next=head2;
+                head2=head2.next;
+                temp=temp.next;
+            }
+        }
+        while (head1!=null) {
+            temp.next=head1;
+            head1=head1.next;
+            temp=temp.next;
+        }
+        while (head2!=null) {
+            temp.next=head2;
+                head2=head2.next;
+                temp=temp.next;
+        }
+        return mergell.next;
+      }
+    
+      public Node mergeSort(Node head){
+        if (head==null || head.next==null) {
+            return head;
+        }
+        // step->1
+        Node mid=getMide(head);
+    
+       // step->2
+       Node rightHead=mid.next;
+       mid.next=null;
+       Node lefthalf=mergeSort(head);
+       Node rightHalf=mergeSort(rightHead);
+    
+       return merge(lefthalf,rightHalf);
+      }
+    public static void main(String[] args) {
+        
+    }
+}
