@@ -34,7 +34,7 @@ public class DeleteNodeInABST {
                 }
             }else{
                 if (curr.right!=null && curr.right.data==key) {
-                    curr.left=helper(curr.right);
+                    curr.right=helper(curr.right);
                     break;
                 }else{
                     curr=curr.right;
