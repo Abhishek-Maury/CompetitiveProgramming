@@ -45,7 +45,7 @@ public class RottenOranges {
             int c = q.peek().col;
             int t = q.peek().time;
             tm = Math.max(t, tm);
-            q.remove()
+            q.remove();
             for (int i = 0; i < 4; i++) {
                 int nrow = r + delrow[i];
                 int ncol = c + delcol[i];
