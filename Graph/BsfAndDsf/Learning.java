@@ -1,6 +1,8 @@
 package Graph.BsfAndDsf;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Learning {
     public static class Edge{
@@ -41,6 +43,32 @@ public class Learning {
       graph[5].add(new Edge(5 ,6,1));
 
       graph[6].add(new Edge(6 ,5,1));
+    }
+//BFS for Connected comonents and also other   
+     public static void bfs(ArrayList<Edge>[] graph){
+      boolean[] vis=new boolean[graph.length];
+
+      for (int i = 0; i < graph.length; i++) {
+        if (!vis[i]) {
+          bfsUtil(graph, vis);
+        }
+      }
+    }
+    public static void bfsUtil(ArrayList<Edge>[] graph,boolean[] vis){
+      Queue<Integer> q = new LinkedList<>();
+      q.add(0);
+
+      while (!q.isEmpty()) {
+        int curr = q.remove();
+        if (!vis[curr]) {
+          vis[curr]=true;
+          System.out.print(curr+" ");
+          for (int i = 0; i < graph[curr].size(); i++) {
+            Edge e = graph[curr].get(i);
+            q.add(e.des);
+          }
+        }
+      }
     }
     public static void main(String[] args) {
         int V=7;
