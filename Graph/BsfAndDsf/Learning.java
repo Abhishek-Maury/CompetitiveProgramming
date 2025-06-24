@@ -70,8 +70,30 @@ public class Learning {
         }
       }
     }
+
+    // DFS for  all connected components
+    public static void dfs(ArrayList<Edge>[] graph){
+      boolean[] vis = new boolean[graph.length];
+      for (int i = 0; i < graph.length; i++) {
+        if (!vis[i]) {
+          dfsUtil(graph, i, vis);
+        }
+      }
+    }
+    public static void dfsUtil(ArrayList<Edge>[] graph,int curr,boolean[] vis){
+      System.out.print(curr+" ");
+      vis[curr]=true;
+      for (int i = 0; i <graph[curr].size(); i++) {
+        Edge e=graph[curr].get(i);
+        if (!vis[e.des]) {
+          dfsUtil(graph, e.des, vis);
+        }
+      }
+    }
     public static void main(String[] args) {
         int V=7;
         ArrayList<Edge>[] graph=new ArrayList[V];
+        createGraph(graph);
+        dfs(graph);
     }
 }
