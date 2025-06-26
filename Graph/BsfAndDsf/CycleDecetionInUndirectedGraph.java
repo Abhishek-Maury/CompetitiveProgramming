@@ -43,6 +43,7 @@ public class CycleDecetionInUndirectedGraph {
       graph[6].add(new Edge(6 ,5,1));
     }
 
+    // Cycle detection For undirected graph (DFS)
     public static boolean isCycle(ArrayList<Edge>[] graph){
         boolean vis[] =new boolean[graph.length];
         for (int i = 0; i < graph.length; i++) {
